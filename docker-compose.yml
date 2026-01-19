@@ -9,8 +9,10 @@ services:
     ports:
       - "8000:8000"
     volumes:
-      # Development mode: mount src as read-only for hot reload
+      # Development mode: mount src and tests for testing and hot reload
       - ./src:/app/src:ro
+      - ./tests:/app/tests:ro
+      - ./pytest.ini:/app/pytest.ini:ro
     environment:
       - LOG_LEVEL=INFO
       - MAX_FILE_SIZE=10485760
