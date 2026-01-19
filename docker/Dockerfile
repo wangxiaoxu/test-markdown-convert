@@ -13,10 +13,12 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     pandoc \
     texlive-xetex \
     texlive-fonts-recommended \
+    texlive-latex-recommended \
     texlive-latex-extra \
     texlive-lang-chinese \
     fonts-noto-cjk \
     fonts-noto-cjk-extra \
+    lmodern \
     curl \
     && rm -rf /var/lib/apt/lists/* \
     && apt-get clean
