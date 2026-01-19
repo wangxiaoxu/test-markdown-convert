@@ -1,0 +1,41 @@
+version: '3.8'
+
+services:
+  converter:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    container_name: md-converter
+    ports:
+      - "8000:8000"
+    volumes:
+      # Development mode: mount src as read-only for hot reload
+      - ./src:/app/src:ro
+    environment:
+      - LOG_LEVEL=INFO
+      - MAX_FILE_SIZE=10485760
+      - TEMP_DIR=/tmp/converter
+      - PANDOC_TIMEOUT=30
+      - PDF_ENGINE=xelatex
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+    deploy:
+      resources:
+        limits:
+          memory: 1G
+        reservations:
+          memory: 512M
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+networks:
+  default:
+    name: converter-network
