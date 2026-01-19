@@ -1,3 +1,4 @@
+所有的推理、任务、实现过程，全程请使用中文
 <!-- OPENSPEC:START -->
 # OpenSpec Instructions
 
