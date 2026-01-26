@@ -7,7 +7,7 @@ services:
       dockerfile: docker/Dockerfile
     container_name: md-converter
     ports:
-      - "8000:8000"
+      - "8002:8000"
     volumes:
       # Development mode: mount src and tests for testing and hot reload
       - ./src:/app/src:ro
