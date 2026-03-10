@@ -70,3 +70,5 @@ Thumbs.db
 !tests/fixtures/*.md
 
 report/
+.trae/
+.bak/
